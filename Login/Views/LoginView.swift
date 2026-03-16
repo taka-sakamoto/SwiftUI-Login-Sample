@@ -14,12 +14,17 @@ struct LoginView: View {
     @State private var username = ""
     @State private var password = ""
     @State private var loginFaild = false
+    @State private var isLoading = false
     
     var body: some View {
         VStack(spacing: 20) {
             Text("ログイン")
                 .font(.largeTitle)
                 .bold()
+            
+            if isLoading {
+                ProgressView()
+            }
                 
             TextField("ユーザー名", text: $username)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -28,26 +33,34 @@ struct LoginView: View {
                 
             SecureField("パスワード", text: $password)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                
+            
             Button("ログイン") {
-                // 認証処理
-                if username == "test" && password == "1234" {
-                    isLoggedIn = true
-                    UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                
+                isLoading = true
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     
-                } else {
-                    loginFaild = true
+                    // 認証処理
+                    if username == "test" && password == "1234" {
+                        isLoggedIn = true
+                        UserDefaults.standard.set(true, forKey: "isLoggedIn")
+                        
+                    } else {
+                        loginFaild = true
+                    }
                 }
             }
             .padding()
             .background(Color.blue)
             .foregroundColor(.white)
             .cornerRadius(8)
+            .disabled(isLoading)
                 
             if loginFaild {
                 Text("ユーザー名またはパスワードが違います")
                     .foregroundColor(.red)
             }
+            
         }
         .padding()
     }
