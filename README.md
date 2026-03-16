@@ -1,6 +1,14 @@
 # SwiftUI Login Sample
 
-SwiftUIでログイン画面の基本構成を実装したサンプルアプリです。
+SwiftUIでログイン画面の基本構成を実装したサンプルアプリです。  
+
+## Screenshot
+<p align="center">
+  <img src="LoginSample01.png" width="250">
+  <img src="LoginSample02.png" width="250">
+  <img src="LoginSample03.png" width="250">
+</p>
+
 
 ## Features
 - Login Screen
