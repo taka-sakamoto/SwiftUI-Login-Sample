@@ -2,28 +2,22 @@
 //  HomeView.swift
 //  Login
 //
-//  Created by Takayuki Sakamoto on 2026/03/16.
+//  Created by Takayuki Sakamoto on 2026/03/31.
 //
 
 import SwiftUI
 
 struct HomeView: View {
-    
-    @Binding var isLoggedIn: Bool
+    @ObservedObject var viewModel: AuthViewModel
     
     var body: some View {
-        
-        VStack(spacing: 20) {
-            
-            Text("ホーム画面")
-                .font(.largeTitle)
+        VStack {
+            Text("ログイン成功")
             
             Button("ログアウト") {
-                isLoggedIn = false
-                UserDefaults.standard.set(false, forKey: "isLoggedIn")
+                viewModel.logout()
             }
         }
-        .navigationTitle("Home")
     }
 }
 

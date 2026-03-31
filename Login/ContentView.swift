@@ -5,6 +5,7 @@
 //  Created by Takayuki Sakamoto on 2026/03/16.
 //
 
+/*
 import SwiftUI
 
 struct ContentView: View {
@@ -14,11 +15,12 @@ struct ContentView: View {
     var body: some View {
         
         NavigationStack {
-            
-            if isLoggedIn {
-                HomeView(isLoggedIn: $isLoggedIn)
+            let viewModel = AuthViewModel()
+
+            if viewModel.isLoggedIn {
+                HomeView(viewModel: viewModel)
             } else {
-                LoginView(isLoggedIn: $isLoggedIn)
+                LoginView(viewModel: viewModel)
             }
         }
     }
@@ -27,3 +29,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+*/

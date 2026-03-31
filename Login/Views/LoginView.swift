@@ -9,11 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @Binding var isLoggedIn: Bool
-    
-    @State private var username = ""
-    @State private var password = ""
-    @State private var loginFaild = false
+    @ObservedObject var viewModel: AuthViewModel
     @State private var isLoading = false
     
     var body: some View {
@@ -26,38 +22,36 @@ struct LoginView: View {
                 ProgressView()
             }
                 
-            TextField("ユーザー名", text: $username)
+            TextField("メール", text: $viewModel.email)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled(true)
                 
-            SecureField("パスワード", text: $password)
+            SecureField("パスワード", text: $viewModel.password)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            Button("ログイン") {
-                
+            Button {
                 isLoading = true
                 
+                // 擬似ローディング
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    
-                    // 認証処理
-                    if username == "test" && password == "1234" {
-                        isLoggedIn = true
-                        UserDefaults.standard.set(true, forKey: "isLoggedIn")
-                        
-                    } else {
-                        loginFaild = true
-                    }
+                    viewModel.login()
+                    isLoading = false
                 }
+                
+            } label: {
+                Text("ログイン")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
             }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(8)
             .disabled(isLoading)
                 
-            if loginFaild {
-                Text("ユーザー名またはパスワードが違います")
+            // エラー表示
+            if !viewModel.errorMessage.isEmpty {
+                Text(viewModel.errorMessage)
                     .foregroundColor(.red)
             }
             
