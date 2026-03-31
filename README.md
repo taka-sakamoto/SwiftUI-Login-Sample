@@ -1,7 +1,7 @@
 # Login App 🔐
 
 ![Login](Lscreenshot1.png)
-![Home](Lscreenshot.png)
+![Home](Lscreenshot2.png)
 
 メールアドレスとパスワードでログインし、ログイン状態を保持できるiOSアプリです。
 
