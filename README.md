@@ -1,29 +1,74 @@
 # Login App 🔐
 
-## Screenshot
-<p align="center">
-  <img src="screenshot1.png" width="250">
-  <img src="screenshot2.png" width="250">
-  <img src="screenshot3.png" width="250">
-</p>
+![Login](Lscreenshot1.png)
+![Home](Lscreenshot.png)
 
+メールアドレスとパスワードでログインし、ログイン状態を保持できるiOSアプリです。
 
-メールアドレスとパスワードでログインできるシンプルなiOSアプリです。
+---
 
-## 機能
-- ログイン
-- ログアウト
-- ログイン状態の保持
+## ■ アプリ概要
+ログイン・ログアウト機能を持つシンプルな認証アプリです。  
+SwiftUIとMVVMを用いて、状態管理と画面遷移の仕組みを意識して実装しました。
 
-## 技術
+---
+
+## ■ 機能
+- ログイン機能
+- ログアウト機能
+- ログイン状態の保持（アプリ再起動時も維持）
+- エラーメッセージ表示
+- ローディング表示
+
+---
+
+## ■ 使用技術
 - SwiftUI（UI構築）
 - MVVM（状態管理）
-- UserDefaults（ログイン状態保存）
+- @StateObject / @ObservedObject
+- UserDefaults（ログイン状態の保存）
 
-## 工夫した点
-- RootViewでログイン状態による画面分岐を実装
-- ViewModelで状態を一元管理し、UIとの分離を実現
+---
 
-## Test Account
-username: test@test.com  
-password: 1234
+## ■ アーキテクチャ
+- MVVMを採用
+- 認証状態（isLoggedIn）をViewModelで一元管理
+- RootViewでログイン状態に応じた画面分岐を実装
+
+---
+
+## ■ 工夫した点
+- RootViewを導入し、ログイン状態による画面切り替えを実現
+- ViewModelにロジックを集約し、Viewと分離
+- UserDefaultsを用いてログイン状態を永続化
+- ローディング状態を管理し、UXを改善
+
+---
+
+## ■ 苦労した点
+- SwiftUIにおける状態管理（@State / @ObservedObject）の理解
+- Viewの再描画タイミングによる画面遷移の制御
+- ViewModelとのデータ連携
+
+---
+
+## ■ 補足
+※ 本アプリでは簡易的な認証（ダミーログイン）を使用しています。  
+実際のアプリではAPI認証やFirebase Authentication等の利用を想定しています。
+
+---
+
+## ■ 実行方法
+1. 本リポジトリをクローン
+2. Xcodeでプロジェクトを開く
+3. ビルド・実行
+
+---
+
+## ■ 画面イメージ
+
+### ログイン画面
+![Login](Lscreenshot1.png)
+
+### ホーム画面
+![Home](Lscreenshot2.png)
