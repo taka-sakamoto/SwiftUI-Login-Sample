@@ -2,9 +2,9 @@
 
 ## Screenshot
 <p align="center">
-  <img src="LoginSample01.png" width="250">
-  <img src="LoginSample02.png" width="250">
-  <img src="LoginSample03.png" width="250">
+  <img src="screenshot1.png" width="250">
+  <img src="screenshot2.png" width="250">
+  <img src="screenshot3.png" width="250">
 </p>
 
 
@@ -25,5 +25,5 @@
 - ViewModelで状態を一元管理し、UIとの分離を実現
 
 ## Test Account
-username: test
+username: test@test.com  
 password: 1234
